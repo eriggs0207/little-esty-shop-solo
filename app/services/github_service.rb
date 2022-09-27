@@ -19,7 +19,7 @@ class GithubService
   end
 
   def self.get_uri(uri)
-    data = HTTParty.get(uri, headers: {authorization: "Bearer "+ENV["KENTOKEN"]})
+    data = HTTParty.get(uri)
     parsed = JSON.parse(data.body, symbolize_names: true)
   end
 end
