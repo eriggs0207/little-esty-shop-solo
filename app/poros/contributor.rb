@@ -1,5 +1,6 @@
 class Contributor
-  attr_reader :login, :commits
+  attr_reader :login,
+              :commits
 
   def initialize(repo_data)
     @login = repo_data[:login]

@@ -1,5 +1,6 @@
 class Holiday
-  attr_reader :name, :date
+  attr_reader :name,
+              :date
 
   def initialize(holiday_data)
     @name = holiday_data[:name]
