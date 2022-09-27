@@ -13,4 +13,8 @@
 
 <div id="holidays-upcoming">
   <h5>Upcoming Holidays:</h5>
+  <% @holidays.each do |holiday| %>
+    <p><%= holiday.name %></p>
+    <p><%= holiday.date %></p>
+  <% end %>
 </div>

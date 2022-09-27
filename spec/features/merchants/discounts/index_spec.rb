@@ -102,5 +102,17 @@ RSpec.describe 'Merchant Discounts Index' do
 
       end
     end
+    it 'In this section the name and date of the next 3 upcoming US holidays' do
+      visit merchant_discounts_path(@merchant_1)
+
+      within("#holidays-upcoming") do
+        expect(page).to have_content("Veterans Day")
+        expect(page).to have_content("2022-11-11")
+        expect(page).to have_content("Thanksgiving Day")
+        expect(page).to have_content("2022-11-24")
+        expect(page).to have_content("Columbus Day")
+        expect(page).to have_content("2022-10-10")
+      end
+    end
   end
 end
