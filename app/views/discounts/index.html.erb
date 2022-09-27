@@ -10,3 +10,11 @@
     <p><%= button_to "Delete #{discount.id}", merchant_discount_path(@merchant, discount) , method: :delete %></p>
   </div>
 <% end %>
+
+<div id="holidays-upcoming">
+  <h5>Upcoming Holidays:</h5>
+  <% @holidays.each do |holiday| %>
+    <p><%= holiday.name %></p>
+    <p><%= holiday.date %></p>
+  <% end %>
+</div>

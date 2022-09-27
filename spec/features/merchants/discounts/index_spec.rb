@@ -90,4 +90,29 @@ RSpec.describe 'Merchant Discounts Index' do
       expect(page).to_not have_content(@discounts[2].id)
     end
   end
+  # As a merchant
+  # When I visit the discounts index page
+  # I see a section with a header of "Upcoming Holidays"
+  # In this section the name and date of the next 3 upcoming US holidays are listed.
+  describe 'user story 9-solo' do
+    it 'I see a section with a header of Upcoming Holidays' do
+      visit merchant_discounts_path(@merchant_1)
+      within("#holidays-upcoming") do
+        expect(page).to have_content("Upcoming Holidays:")
+
+      end
+    end
+    it 'In this section the name and date of the next 3 upcoming US holidays' do
+      visit merchant_discounts_path(@merchant_1)
+
+      within("#holidays-upcoming") do
+        expect(page).to have_content("Veterans Day")
+        expect(page).to have_content("2022-11-11")
+        expect(page).to have_content("Thanksgiving Day")
+        expect(page).to have_content("2022-11-24")
+        expect(page).to have_content("Columbus Day")
+        expect(page).to have_content("2022-10-10")
+      end
+    end
+  end
 end
