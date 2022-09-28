@@ -127,15 +127,15 @@ RSpec.describe "Admin Invoice Show Page" do
           visit admin_invoice_path(invoice_1)
 
           within("#invoice-details-#{invoice_1.id}") do
-            expect(page).to have_content(invoice_1.total_discounted_revenue)
-            expect(page).to_not have_content(invoice_2.total_discounted_revenue)
+            expect(page).to have_content((invoice_1.total_discounted_revenue/100.00).to_s(:delimited))
+            expect(page).to_not have_content((invoice_2.total_discounted_revenue/100.00).to_s(:delimited))
           end
 
           visit admin_invoice_path(invoice_2)
 
           within("#invoice-details-#{invoice_2.id}") do
-            expect(page).to have_content(invoice_2.total_discounted_revenue)
-            expect(page).to_not have_content(invoice_1.total_discounted_revenue)
+            expect(page).to have_content((invoice_2.total_discounted_revenue/100.00).to_s(:delimited))
+            expect(page).to_not have_content((invoice_1.total_discounted_revenue/100.00).to_s(:delimited))
           end
         end
       end
