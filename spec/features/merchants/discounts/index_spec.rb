@@ -97,11 +97,12 @@ RSpec.describe 'Merchant Discounts Index' do
   describe 'user story 9-solo' do
     it 'I see a section with a header of Upcoming Holidays' do
       visit merchant_discounts_path(@merchant_1)
+
       within("#holidays-upcoming") do
         expect(page).to have_content("Upcoming Holidays:")
-
       end
     end
+    
     it 'In this section the name and date of the next 3 upcoming US holidays' do
       visit merchant_discounts_path(@merchant_1)
 
