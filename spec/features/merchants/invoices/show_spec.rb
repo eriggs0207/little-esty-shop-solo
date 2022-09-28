@@ -5,8 +5,8 @@ RSpec.describe 'Merchant Invoice Show Page' do
     @merchant_1 = create(:merchant)
     @merchant_2 = create(:merchant)
 
-    @discounts = create_list(:discount, 5, merchant: @merchant_1)
-    @discounts_1 = create_list(:discount, 5, merchant: @merchant_2)
+    @discounts = create_list(:discount, 100, merchant: @merchant_1)
+    @discounts_1 = create_list(:discount, 100, merchant: @merchant_2)
 
     @item_1 = create(:item, merchant: @merchant_1)
     @item_2 = create(:item, merchant: @merchant_2)
@@ -225,13 +225,13 @@ RSpec.describe 'Merchant Invoice Show Page' do
       visit merchant_invoice_path(@merchant_1, @invoice_1)
 
       within "#invoice-revenue" do
-        expect(page).to have_content(@invoice_1.merchant_revenue(@merchant_1))
+        expect(page).to have_content((@invoice_1.merchant_revenue(@merchant_1)/100.00).round(2).to_s(:delimited))
       end
 
       visit merchant_invoice_path(@merchant_2, @invoice_2)
 
       within "#invoice-revenue" do
-        expect(page).to have_content(@invoice_2.merchant_revenue(@merchant_2))
+        expect(page).to have_content((@invoice_2.merchant_revenue(@merchant_2)/100.00).round(2).to_s(:delimited))
       end
     end
 
@@ -241,12 +241,12 @@ RSpec.describe 'Merchant Invoice Show Page' do
       visit merchant_invoice_path(@merchant_1, @invoice_1)
 
       within "#invoice-revenue" do
-        expect(page).to have_content(@invoice_1.merchant_discounted_revenue(@merchant_1))
+        expect(page).to have_content((@invoice_1.merchant_discounted_revenue(@merchant_1)/100.00).round(2).to_s(:delimited))
       end
       visit merchant_invoice_path(@merchant_2, @invoice_2)
-
+      save_and_open_page
       within "#invoice-revenue" do
-        expect(page).to have_content(@invoice_2.merchant_discounted_revenue(@merchant_2))
+        expect(page).to have_content((@invoice_2.merchant_discounted_revenue(@merchant_2)/100.00).round(2).to_s(:delimited))
       end
     end
   end

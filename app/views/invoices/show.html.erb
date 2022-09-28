@@ -2,8 +2,8 @@
 
 <div id="invoice-revenue">
   <p>Total Revenue of all Items: <%= @invoice.items.total_revenue_of_all_items %></p>
-  <p>Total Revenue of all Invoices: <%= @invoice.merchant_revenue(@merchant) %></p>
-  <p>Total Revenue with Bulk Discounts Applied: <%= @invoice.merchant_discounted_revenue(@merchant) %></p>
+  <p>Total Revenue of all Invoices: <%= number_to_currency(@invoice.merchant_revenue(@merchant)/100.00) %></p>
+  <p>Total Revenue with Bulk Discounts Applied: <%= number_to_currency(@invoice.merchant_discounted_revenue(@merchant)/100.00) %></p>
 </div>
 
 <div id="invoice-info">
