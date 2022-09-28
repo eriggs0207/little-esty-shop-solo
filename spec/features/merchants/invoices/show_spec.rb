@@ -244,7 +244,7 @@ RSpec.describe 'Merchant Invoice Show Page' do
         expect(page).to have_content((@invoice_1.merchant_discounted_revenue(@merchant_1)/100.00).round(2).to_s(:delimited))
       end
       visit merchant_invoice_path(@merchant_2, @invoice_2)
-      save_and_open_page
+      
       within "#invoice-revenue" do
         expect(page).to have_content((@invoice_2.merchant_discounted_revenue(@merchant_2)/100.00).round(2).to_s(:delimited))
       end
